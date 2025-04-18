@@ -1,27 +1,34 @@
-#pragma once
+#ifndef PIECE_H
+#define PIECE_H
+
 #include <string>
+#include <iostream>
+class Board; // Forward declaration
 
 class Piece {
 protected:
-    char symbol;
-    std::string src;
-    std::string dest;
-    bool isAlive = true;
+    bool isWhite;      
+    bool alive;              // true if piece is still on the board
+    char symbol;             // piece symbol (e.g. 'R' or 'k')
 
 public:
-    Piece() = default;
-    Piece(char s, const std::string& source, const std::string& destination);
+    // Construct with color and optional symbol
+    Piece(bool isWhite) : isWhite(isWhite) {}
+
+    // Virtual destructor
     virtual ~Piece() = default;
 
-    char getSymbol() const;
-    const std::string& getSrc() const;
-    const std::string& getDest() const;
-    bool getIsAlive() const;
+    // Pure virtual function for movement logic
+    virtual bool isValidMove(int srcRow, int srcCol, int destRow, int destCol, const Board& board) const = 0;
 
-    void setSymbol(char s);
-    void setSrc(const std::string& source);
-    void setDest(const std::string& destination);
-    void setIsAlive(bool alive);
+    // Accessors
+    inline char getSymbol() const { return symbol; }
+    inline bool getIsWhite() const { return isWhite; }
+    inline bool isAlive() const { return alive; }
 
-    virtual bool isValidMove(const std::string& source, const std::string& destination) const = 0;
+    // Mutators
+    inline void setAlive(bool status) { alive = status; }
+    inline void setSymbol(char s) { symbol = s; }
 };
+
+#endif // PIECE_H

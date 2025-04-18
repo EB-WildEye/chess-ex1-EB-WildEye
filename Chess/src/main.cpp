@@ -8,8 +8,12 @@ int main()
 //	string board = "##########K###############################R#############r#r#####";
 	Chess a(board);
 	int codeResponse = 0;
-	GameEngine game(board); 
+	GameEngine game; 
 	string res = a.getInput();
+
+	bool turn = true; // true is white
+
+
 	while (res != "exit")
 	{
 		/* 
@@ -27,13 +31,14 @@ int main()
 		*/
 
 		/**/ 
-			{ // get user input, check validation and set the code response
-				codeResponse = game.validateMove(res);
-			}
+		// get user input, check validation and set the code response
+		
+		codeResponse = game.validateMove(res, true);
 		/**/
 
 		a.setCodeResponse(codeResponse);
 		res = a.getInput(); 
+
 	}
 
 	cout << endl << "Exiting " << endl; 

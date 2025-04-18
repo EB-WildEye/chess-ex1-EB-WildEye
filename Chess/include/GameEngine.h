@@ -1,22 +1,30 @@
-// Updated GameEngine.h
-#pragma once
-#include <vector>
-#include <memory>
-#include <string>
-#include "Piece.h"
+#ifndef GAMEENGINE_H
+#define GAMEENGINE_H
+
+#include "Board.h"
 #include "Rook.h"
-// #include "Bishop.h"
-// #include "Queen.h"
 // #include "King.h"
-// #include "Board.h"
+// #include "Queen.h"
+// #include "Bishop.h"
+#include <vector>
+#include <string>
 
 class GameEngine {
 private:
-    std::vector<std::vector<std::shared_ptr<Piece>>> board;
-    std::vector<std::shared_ptr<Piece>> pieces; // Store all created pieces
-    bool whiteTurn = true;
+    Board* board;
+    std::vector<Piece*> pieces; // raw pointers for cleanup
+    int codeResponse;
+    std::string playerColor;
+    std::string opponentColor;
 
 public:
-    GameEngine(const std::string& boardStr);
-    int validateMove(const std::string& input);
+    GameEngine();
+    ~GameEngine();
+
+    void initGame();
+    void setCodeResponse(int code);
+    int getCodeResponse() const;
+    int validateMove(std::string input, int playerIsWhite);
 };
+
+#endif // GAMEENGINE_H

@@ -25,6 +25,7 @@ set(SOURCES
     src/Chess.cpp
     src/GameEngine.cpp
     src/Rook.cpp
+    src/Board.cpp
 )
 
 # Create the executable

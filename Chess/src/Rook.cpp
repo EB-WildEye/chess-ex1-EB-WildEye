@@ -1,13 +1,32 @@
 #include "Rook.h"
+#include "Board.h"
+#include <cmath> // for abs
+#include <iostream> // for debugging
 
-Rook::Rook(char s, const std::string& source, const std::string& destination)
-    : Piece(s, source, destination) {}
+Rook::Rook(bool isWhite) : Piece(isWhite) {
+    symbol = isWhite ? 'R' : 'r'; // Assign symbol based on color
+    alive = true; // Rook is alive when created
+}
 
-bool Rook::isValidMove(const std::string& source, const std::string& destination) const {
-    int srcCol = source[0] - 'a';
-    int srcRow = source[1] - '1';
-    int destCol = destination[0] - 'a';
-    int destRow = destination[1] - '1';
+// Valid rook movement: horizontal or vertical, clear path
+bool Rook::isValidMove(int srcRow, int srcCol, int destRow, int destCol, const Board& board) const {
+    if (srcRow != destRow && srcCol != destCol)
+        return false; // must move in straight lines
 
-    return (srcCol == destCol || srcRow == destRow);
+    // Check path is clear
+    int rowStep = (destRow - srcRow == 0) ? 0 : (destRow - srcRow) / abs(destRow - srcRow);
+    int colStep = (destCol - srcCol == 0) ? 0 : (destCol - srcCol) / abs(destCol - srcCol);
+
+    int row = srcRow + rowStep;
+    int col = srcCol + colStep;
+
+    while (row != destRow || col != destCol) {
+        if (board.getPiece(row, col) != nullptr)
+            return false; // path blocked
+        row += rowStep;
+        col += colStep;
+    }
+
+    // Valid rook move
+    return true;
 }
