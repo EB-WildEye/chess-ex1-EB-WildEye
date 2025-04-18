@@ -7,7 +7,8 @@ class Board; // Forward declaration
 
 class Piece {
 protected:
-    bool isWhite;      
+    bool isWhite;
+    // check if initialized here or in c'tor :    
     bool alive;              // true if piece is still on the board
     char symbol;             // piece symbol (e.g. 'R' or 'k')
 

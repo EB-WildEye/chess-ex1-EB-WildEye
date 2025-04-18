@@ -15,7 +15,7 @@ private:
     std::vector<Piece*> pieces; // raw pointers for cleanup
     int codeResponse;
     std::string playerColor;
-    std::string opponentColor;
+    std::string opponentColor; // check if needed
 
 public:
     GameEngine();

@@ -2,7 +2,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include <map> // Add this include
+#include <map> // using std::map
 #include "Piece.h"
 #include <memory>
 

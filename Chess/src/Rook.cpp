@@ -14,10 +14,10 @@ bool Rook::isValidMove(int srcRow, int srcCol, int destRow, int destCol, const B
         return false; // must move in straight lines
 
     // Check path is clear
-    int rowStep = (destRow - srcRow == 0) ? 0 : (destRow - srcRow) / abs(destRow - srcRow);
-    int colStep = (destCol - srcCol == 0) ? 0 : (destCol - srcCol) / abs(destCol - srcCol);
+    int rowStep = (destRow - srcRow == 0) ? 0 : (destRow - srcRow) / abs(destRow - srcRow); // step in row direction
+    int colStep = (destCol - srcCol == 0) ? 0 : (destCol - srcCol) / abs(destCol - srcCol); // same for column
 
-    int row = srcRow + rowStep;
+    int row = srcRow + rowStep; 
     int col = srcCol + colStep;
 
     while (row != destRow || col != destCol) {

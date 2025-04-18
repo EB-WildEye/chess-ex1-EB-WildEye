@@ -75,5 +75,8 @@ int GameEngine::validateMove(std::string input, int playerIsWhite) {
     board->setPiece(destRow, destCol, std::unique_ptr<Piece>(piece));
     board->removePiece(srcRow, srcCol);
 
-    return 42;
+    return 42; // valid move
 }
+
+// valid: 41 is needed - the last movement was legal and cause check
+// not valid: 31 is needed - 31 - this movement will cause you checkmate
