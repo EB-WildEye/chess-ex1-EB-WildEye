@@ -27,6 +27,8 @@ set(SOURCES
     src/Rook.cpp
     src/Board.cpp
     src/King.cpp
+    src/Queen.cpp
+    src/Bishop.cpp
 )
 
 # Create the executable
