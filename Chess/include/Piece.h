@@ -1,24 +1,27 @@
-// piece header file - for chess pieces 
 #pragma once
-#include <iostream>
 #include <string>
 
-#ifdef _WIN32
-#include <Windows.h>
-#endif
-   
-
 class Piece {
-    public:
-        Piece(char piece = ' ', char color = ' ');
-        Piece(const Piece&) = delete;
-        Piece& operator=(const Piece&) = delete;
-        char getPiece() const;
-        char getColor() const;
-        void setPiece(char piece);
-        void setColor(char color);
-    private:
-        char m_piece;
-        char m_color;
-    };
-// piece header file - for chess pieces
+protected:
+    char symbol;
+    std::string src;
+    std::string dest;
+    bool isAlive = true;
+
+public:
+    Piece() = default;
+    Piece(char s, const std::string& source, const std::string& destination);
+    virtual ~Piece() = default;
+
+    char getSymbol() const;
+    const std::string& getSrc() const;
+    const std::string& getDest() const;
+    bool getIsAlive() const;
+
+    void setSymbol(char s);
+    void setSrc(const std::string& source);
+    void setDest(const std::string& destination);
+    void setIsAlive(bool alive);
+
+    virtual bool isValidMove(const std::string& source, const std::string& destination) const = 0;
+};
