@@ -1,3 +1,0 @@
-/mnt/c/Users/eb300/OneDrive/Desktop/Exellentim_Cpp/chess-workspace-edition/chess-ex1-EB-WildEye/Chess/build/CMakeFiles/Chess.dir
-/mnt/c/Users/eb300/OneDrive/Desktop/Exellentim_Cpp/chess-workspace-edition/chess-ex1-EB-WildEye/Chess/build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/eb300/OneDrive/Desktop/Exellentim_Cpp/chess-workspace-edition/chess-ex1-EB-WildEye/Chess/build/CMakeFiles/rebuild_cache.dir
